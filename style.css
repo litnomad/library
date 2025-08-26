@@ -1,0 +1,7 @@
+fieldset {
+    width: 300px;
+}
+
+form > div {
+    margin: 5px;
+}
