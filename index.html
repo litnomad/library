@@ -10,17 +10,23 @@
 
 <body>
     <button id="btn">New Book</button>
-    <fieldset>
+    <fieldset id="form">
         <legend>Book</legend>
         <form action="">
-            <div><label for="title">Title: </label><input type="text" id="title" name="title"></div>
-            <div><label for="author">Author: </label><input type="text" id="author" name="author"></div>
-            <div><label for="pages">Pages: </label><input type="number" id="pages" name="pages"></div>
-            <div>Status: <input type="radio" id="read" name="status"><label for="read">Read</label><input type="radio"
-                    id="unread" name="status"><label for="unread">Unread</label></div>
+            <div><label for="title">Title: </label><input type="text" id="title" name="title" required></div>
+            <div><label for="author">Author: </label><input type="text" id="author" name="author" required></div>
+            <div><label for="pages">Pages: </label><input type="number" id="pages" name="pages" required></div>
+            <fieldset id="radio">
+                <legend>Status:</legend>
+                <input type="radio" id="read" name="status" value="Read"><label for="read">Read</label><input
+                    type="radio" id="unread" name="status" value="Unread"><label for="unread">Unread</label>
+            </fieldset>
         </form>
-        <button type="submit" id="new">Confirm</button>
+        <button type="submit" id="new">Add</button>
     </fieldset>
+    
+        <div id="content"></div>
+    
     <script src="script.js"></script>
 </body>
 
