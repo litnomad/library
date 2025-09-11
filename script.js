@@ -16,7 +16,7 @@ document.getElementById('btn').addEventListener('click', () => {
 let content;
 let button;
 let div;
-const myLibrary = [];
+let myLibrary = [];
 
 document.getElementById('add').addEventListener('click', () => {
     content = document.getElementById('content');
@@ -32,33 +32,40 @@ document.getElementById('add').addEventListener('click', () => {
         this.author = author;
         this.pages = pages;
         this.status = status;
+        this.ref = window.crypto.randomUUID();  // This ensures each book has a unique and stable identifier, preventing issues when books are removed or rearranged.
         this.info = function () {
             return '<b>' + this.title + '</b>' + '<br>' + this.author + '<br>' + this.pages + " pages" + '<br>' + this.status
         };
     };
 
     if (title.length > 0 && author.length > 0 && pages.length > 0) {
-        const newBook = new Book(title, author, pages, status);
-        myLibrary.push(newBook.info());
+        let newBook = new Book(title, author, pages, status);
+        console.log(newBook)
+        myLibrary.push(newBook);
 
         content.appendChild(div);
-        div.setAttribute('id', 'card');
+        div.setAttribute('id', newBook.ref);
         div.innerHTML = newBook.info();
 
         div.appendChild(button);
-        button.setAttribute('id', 'delete');
+        button.setAttribute('id', newBook.ref);
         button.setAttribute('onclick', 'remove(this)');
         button.textContent = 'delete';
 
     };
 
-    for (let i = 0; i < myLibrary.length; i++) {
-        div.setAttribute('class', [i]);
-        button.setAttribute('class', [i]);
-    }
-
 });
 
+
 function remove(e) {
-    e.parentElement.remove();
+    console.log(e);
+
+    const id = document.getElementById(e.id);
+    console.log(id);
+    id.remove();
+    
+    myLibrary = myLibrary.filter((Book) => Book.ref != e.id);
 }
+
+// Add a button on each book’s display to change its read status.
+// To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
