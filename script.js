@@ -14,13 +14,15 @@ document.getElementById('btn').addEventListener('click', () => {
 );
 
 let content;
-let button;
+let deleteButton;
+let statusButton;
 let div;
 let myLibrary = [];
 
 document.getElementById('add').addEventListener('click', () => {
     content = document.getElementById('content');
-    button = document.createElement('button');
+    deleteButton = document.createElement('button');
+    statusButton = document.createElement('button');
     div = document.createElement('div');
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
@@ -34,7 +36,7 @@ document.getElementById('add').addEventListener('click', () => {
         this.status = status;
         this.ref = window.crypto.randomUUID();  // This ensures each book has a unique and stable identifier, preventing issues when books are removed or rearranged.
         this.info = function () {
-            return '<b>' + this.title + '</b>' + '<br>' + this.author + '<br>' + this.pages + " pages" + '<br>' + this.status
+            return '<b>' + this.title + '</b>' + '<br>' + this.author + '<br>' + this.pages + " pages"
         };
     };
 
@@ -47,15 +49,25 @@ document.getElementById('add').addEventListener('click', () => {
         div.setAttribute('id', newBook.ref);
         div.innerHTML = newBook.info();
 
-        div.appendChild(button);
-        button.setAttribute('id', newBook.ref);
-        button.setAttribute('onclick', 'remove(this)');
-        button.textContent = 'delete';
+        div.appendChild(statusButton);
+        statusButton.setAttribute('id', 'status');
+        statusButton.innerHTML = newBook.status;
+
+        div.appendChild(deleteButton);
+        deleteButton.setAttribute('id', newBook.ref);
+        deleteButton.setAttribute('onclick', 'remove(this)');
+        deleteButton.textContent = 'delete';
 
     };
 
-});
+    // Add a button on each book’s display to change its read status.
+    // To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
+    Book.prototype.statusUpdate = function statusUpdate() {
+        // clicking status button to change this.status
 
+    }
+
+});
 
 function remove(e) {
     console.log(e);
@@ -63,9 +75,7 @@ function remove(e) {
     const id = document.getElementById(e.id);
     console.log(id);
     id.remove();
-    
-    myLibrary = myLibrary.filter((Book) => Book.ref != e.id);
-}
 
-// Add a button on each book’s display to change its read status.
-// To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
+    myLibrary = myLibrary.filter((Book) => Book.ref != e.id);
+    console.log(myLibrary);
+}
