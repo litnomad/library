@@ -27,7 +27,7 @@ document.getElementById('add').addEventListener('click', () => {
         this.status = status;
         this.ref = window.crypto.randomUUID();  
         this.info = function () {
-            return '<b>' + this.title + '</b>' + '<br>' + this.author + '<br>' + this.pages + " pages"
+            return '<div>' + '<b>' + this.title + '</b>' + '</div>' + '<div>' + this.author + '</div>' + '<div>' + this.pages + " pages" + '</div>'
         };
     };
 
