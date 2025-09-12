@@ -3,7 +3,7 @@
 The objective of this project is to create a library app with a focus on the use of constructors. 
 
 Purpose:
-- Allows user to add and display books for the library.
+- Allows user to add and display books in the library.
 
 Features: 
 - Button that brings up a form
