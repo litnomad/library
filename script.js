@@ -13,17 +13,10 @@ document.getElementById('btn').addEventListener('click', () => {
 }
 );
 
-let content;
-let deleteButton;
-let statusButton;
-let div;
 let myLibrary = [];
 
 document.getElementById('add').addEventListener('click', () => {
-    content = document.getElementById('content');
-    deleteButton = document.createElement('button');
-    statusButton = document.createElement('button');
-    div = document.createElement('div');
+
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
@@ -40,34 +33,45 @@ document.getElementById('add').addEventListener('click', () => {
         };
     };
 
-    if (title.length > 0 && author.length > 0 && pages.length > 0) {
-        let newBook = new Book(title, author, pages, status);
-        console.log(newBook)
-        myLibrary.push(newBook);
-
-        content.appendChild(div);
-        div.setAttribute('id', newBook.ref);
-        div.innerHTML = newBook.info();
-
-        div.appendChild(statusButton);
-        statusButton.setAttribute('id', 'status');
-        statusButton.innerHTML = newBook.status;
-
-        div.appendChild(deleteButton);
-        deleteButton.setAttribute('id', newBook.ref);
-        deleteButton.setAttribute('onclick', 'remove(this)');
-        deleteButton.textContent = 'delete';
-
-    };
-
-    // Add a button on each book’s display to change its read status.
-    // To facilitate this you will want to create Book prototype function that toggles a book instance’s read status.
-    Book.prototype.statusUpdate = function statusUpdate() {
-        // clicking status button to change this.status
-
+    // Book prototype function that toggles a book instance’s read status.
+    Book.prototype.toggle = function () {
+        return '<button id=status onclick=toggle(this)>' + this.status + '</button>'
     }
 
+    if (title.length > 0 && author.length > 0 && pages.length > 0) {
+        let newBook = new Book(title, author, pages, status);
+        console.log(newBook);
+        myLibrary.push(newBook);
+        console.log(myLibrary);
+    };
+
+    const content = document.getElementById('content');
+    const div = document.createElement('div');
+    const deleteButton = document.createElement('button');
+
+    // Loops through the array and displays each book on the page. 
+    myLibrary.forEach((Book) => {
+        content.appendChild(div);
+        div.setAttribute('id', Book.ref);
+        div.innerHTML = '<b>' + Book.title + '</b>' + '<br>' + Book.author + '<br>' + Book.pages + ' pages' + Book.toggle()
+
+        div.appendChild(deleteButton);
+        deleteButton.setAttribute('id', Book.ref);
+        deleteButton.setAttribute('onclick', 'remove(this)');
+        deleteButton.textContent = 'delete';
+    })
+
 });
+
+/* toggles status button 
+function toggle(e) {
+    if (e.innerHTML == 'read') {
+        e.innerHTML = 'unread'
+    }
+    else {
+        e.innerHTML = 'read';
+    }
+}
 
 function remove(e) {
     console.log(e);
@@ -79,3 +83,4 @@ function remove(e) {
     myLibrary = myLibrary.filter((Book) => Book.ref != e.id);
     console.log(myLibrary);
 }
+*/
