@@ -1,6 +1,4 @@
-const body = document.querySelector('body');
 const form = document.querySelector('fieldset');
-
 form.style.visibility = 'hidden';
 
 document.getElementById('btn').addEventListener('click', () => {
@@ -27,15 +25,15 @@ document.getElementById('add').addEventListener('click', () => {
         this.author = author;
         this.pages = pages;
         this.status = status;
-        this.ref = window.crypto.randomUUID();  // This ensures each book has a unique and stable identifier, preventing issues when books are removed or rearranged.
+        this.ref = window.crypto.randomUUID();  
         this.info = function () {
             return '<b>' + this.title + '</b>' + '<br>' + this.author + '<br>' + this.pages + " pages"
         };
     };
 
-    // Book prototype function that toggles a book instance’s read status.
+    // Book prototype function that toggles a book instance’s read status
     Book.prototype.toggle = function () {
-        return '<button id=status onclick=toggle(this)>' + this.status + '</button>'
+        return '<button ' + 'id=' + this.ref + ' onclick=toggle(this)>' + this.status + '</button>'
     }
 
     if (title.length > 0 && author.length > 0 && pages.length > 0) {
@@ -45,15 +43,15 @@ document.getElementById('add').addEventListener('click', () => {
         console.log(myLibrary);
     };
 
+    // Loops through the array and displays each book on the page
     const content = document.getElementById('content');
     const div = document.createElement('div');
     const deleteButton = document.createElement('button');
 
-    // Loops through the array and displays each book on the page. 
     myLibrary.forEach((Book) => {
         content.appendChild(div);
         div.setAttribute('id', Book.ref);
-        div.innerHTML = '<b>' + Book.title + '</b>' + '<br>' + Book.author + '<br>' + Book.pages + ' pages' + Book.toggle()
+        div.innerHTML = Book.info() + Book.toggle();
 
         div.appendChild(deleteButton);
         deleteButton.setAttribute('id', Book.ref);
@@ -63,16 +61,20 @@ document.getElementById('add').addEventListener('click', () => {
 
 });
 
-/* toggles status button 
+// Toggles read status
 function toggle(e) {
-    if (e.innerHTML == 'read') {
-        e.innerHTML = 'unread'
-    }
-    else {
-        e.innerHTML = 'read';
+    for (const Book of myLibrary) {
+        if (e.id === Book.ref) {
+            if (e.innerHTML === 'read') {
+                Book.status = 'unread';
+                e.innerHTML = 'unread';
+            }
+            else { Book.status = 'read'; e.innerHTML = 'read' }
+        }
     }
 }
 
+// Deletes book from the library
 function remove(e) {
     console.log(e);
 
@@ -83,4 +85,4 @@ function remove(e) {
     myLibrary = myLibrary.filter((Book) => Book.ref != e.id);
     console.log(myLibrary);
 }
-*/
+
