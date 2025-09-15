@@ -2,42 +2,75 @@ body {
   text-align: center;
   margin: 0px;
   padding: 0px;
+  font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
 }
 
-#btn {
-  margin-top: 20px;
+.btn {
+  background-color: pink;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 23px;
 }
 
-#form {
+#add {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.form {
     margin: 20px auto;
-    width: 300px;
 }
 
-#radio {
+.form-wrap {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.form-left-col{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.form-right-col {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.radio {
   border: none;
+  display: flex;
+  justify-content: center;
 }
 
 form > div {
     margin: 5px;
 }
 
+.header {
+  padding: 10px;
+}
+
 #content {
-  width: 75ch;
+  background-color: pink;
+  width: 100%;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 180px);
   justify-content: center;
 }
 
 #content > div {
-  width: 200px;
   background-color: white;
   color: black;
-  border: 1px solid black;
-  border-radius: 2px;
+  border: 2px solid pink;
+  border-radius: 5px;
   padding: 10px;
   margin: 5px;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 20px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
 }
+
