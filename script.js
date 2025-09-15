@@ -29,7 +29,7 @@ function Book() {
 
 // Book prototype function that toggles a book instance’s read status
 Book.prototype.toggle = function () {
-    return '<button ' + 'id=' + this.ref + ' onclick=toggle(this)>' + this.read + '</button>'
+    return '<button ' + 'id=' + this.ref + ' class=statusBtn ' + 'onclick=toggle(this)>' + this.read + '</button>'
 }
 
 function addToLibrary() {
@@ -61,7 +61,7 @@ function displayLibrary() {
 
         bookTitle.textContent = Book.title;
         bookAuthor.textContent = Book.author;
-        bookPages.textContent = Book.pages;
+        bookPages.textContent = Book.pages + ' pages';
         statusToggle.innerHTML = Book.toggle();
 
         div.appendChild(deleteButton);
@@ -97,7 +97,9 @@ function remove(e) {
     console.log(myLibrary);
 }
 
-submit.addEventListener('click', () => {
+submit.addEventListener('click', (e) => {
     addToLibrary();
     displayLibrary();
+    e.preventDefault();
 });
+
