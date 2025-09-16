@@ -76,10 +76,14 @@ label[for='pages'] {
 input[id='title'],
 input[id='author'] {
   width: 300px;
+  color: #ffffff;
+  background-color: var(--border-color);
 }
 
 input[id='pages'] {
   width: 100px;
+  color: #ffffff;
+  background-color: var(--border-color);
 }
 
 form>div {
