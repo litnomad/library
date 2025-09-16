@@ -1,8 +1,8 @@
 html {
-  --bg: pink;
+  --bg: #d1aedd;
   --header-bg: white;
   --books: white;
-  --button-color: pink;
+  --button-color: #d1aedd;
 }
 
 body {
@@ -40,7 +40,7 @@ body {
 
 .form {
   margin: 20px auto;
-  border: 2px solid var(--bg);
+  border: 2px solid black;
 }
 
 legend {
@@ -94,7 +94,7 @@ form>div {
 #content>div {
   background-color: var(--books);
   color: black;
-  border-top: 5px solid var(--bg);
+  border-top: 10px solid var(--bg);
   border-radius: 5px;
   padding: 10px;
   display: grid;
