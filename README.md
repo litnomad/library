@@ -9,5 +9,5 @@ Features:
 - Button that brings up a form
 - Displays books that includes title, author, and number of pages
 - Update read status
-- Remove a book from the library
+- Remove book from the library
 
