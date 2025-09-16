@@ -43,11 +43,16 @@ Book.prototype.toggle = function () {
 }
 
 function addToLibrary() {
-
     if (title.value.length > 0 && author.value.length > 0 && pages.value.length > 0) {
         let newBook = new Book(title, author, pages, read);
         myLibrary.push(newBook);
         console.log(myLibrary);
+
+        title.value = ''
+        author.value = ''
+        pages.value = ''
+
+        displayLibrary();
     };
 }
 
@@ -110,7 +115,6 @@ function remove(e) {
 
 submit.addEventListener('click', (e) => {
     addToLibrary();
-    displayLibrary();
     e.preventDefault();
 });
 
