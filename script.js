@@ -2,8 +2,18 @@ const content = document.querySelector('#content');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
-const submit = document.querySelector('#add');
+const submit = document.querySelector('.submitBtn');
 const form = document.querySelector('fieldset');
+
+function checkStatusRadio() {
+    let read = document.querySelector('input[name=status]:checked');
+    if (read) {
+        return read.value;
+    }
+    else {
+        false;
+    }
+}
 
 form.style.visibility = 'hidden';
 
@@ -23,7 +33,7 @@ function Book() {
     this.title = title.value;
     this.author = author.value;
     this.pages = pages.value;
-    this.read = read.value;
+    this.read = checkStatusRadio();
     this.ref = window.crypto.randomUUID();
 };
 
@@ -33,7 +43,7 @@ Book.prototype.toggle = function () {
 }
 
 function addToLibrary() {
-    const read = document.querySelector('input[name="status"]:checked');
+
     if (title.value.length > 0 && author.value.length > 0 && pages.value.length > 0) {
         let newBook = new Book(title, author, pages, read);
         myLibrary.push(newBook);
@@ -66,6 +76,7 @@ function displayLibrary() {
 
         div.appendChild(deleteButton);
         deleteButton.setAttribute('id', Book.ref);
+        deleteButton.setAttribute('class', 'deleteBtn');
         deleteButton.setAttribute('onclick', 'remove(this)');
         deleteButton.textContent = 'delete';
     })
