@@ -3,6 +3,7 @@ html {
   --header-bg: white;
   --books: white;
   --button-color: #d1aedd;
+  --shadow: #403444;
 }
 
 body {
@@ -10,7 +11,6 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: 'Courier New', Courier, monospace;
-  height: 100vh;
 }
 
 .btn {
@@ -40,7 +40,7 @@ body {
 
 .form {
   margin: 20px auto;
-  border: 2px solid black;
+  border: 1px solid var(--bg);
 }
 
 legend {
@@ -79,6 +79,15 @@ form>div {
 
 .header {
   padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid var(--bg);
+  box-shadow: 8px 8px var(--shadow);
 }
 
 #content {
@@ -88,14 +97,16 @@ form>div {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 200px));
   justify-content: center;
-  gap: 2px;
+  gap: 10px;
 }
 
 #content>div {
   background-color: var(--books);
   color: black;
-  border-top: 10px solid var(--bg);
-  border-radius: 5px;
+  border-top: none;
+  border-radius: none;
+  border: 1px solid var(--bg);
+  box-shadow: 8px 8px var(--shadow);
   padding: 10px;
   display: grid;
 }
