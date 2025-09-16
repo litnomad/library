@@ -11,7 +11,7 @@ function checkStatusRadio() {
         return read.value;
     }
     else {
-        false;
+        return 'change status';
     }
 }
 
@@ -48,9 +48,9 @@ function addToLibrary() {
         myLibrary.push(newBook);
         console.log(myLibrary);
 
-        title.value = ''
+        /* title.value = ''
         author.value = ''
-        pages.value = ''
+        pages.value = '' */
 
         displayLibrary();
     };
