@@ -1,19 +1,23 @@
 html {
-  --bg: #d1aedd;
-  --header-bg: white;
-  --books: white;
-  --button-color: #d1aedd;
-  --shadow: #403444;
+  --bg: #ffffff;
+  --books-bg: #ffffff;
+  --button-color: #a03d3d;
+  --border-color: #a03d3d;
+  --shadow: #7e2f2f;
+  --status-color: #ffffff;
+}
+
+button:hover {
+  border-style: inset;
 }
 
 body {
   text-align: center;
-  margin: 0px;
-  padding: 0px;
   font-family: 'Courier New', Courier, monospace;
 }
 
 .btn {
+  color: #ffffff;
   background-color: var(--button-color);
   font-family: 'Courier New', Courier, monospace;
   font-size: 23px;
@@ -21,6 +25,7 @@ body {
 
 .submitBtn {
   width: 80px;
+  color: #ffffff;
   background-color: var(--button-color);
   font-family: 'Courier New', Courier, monospace;
   align-self: center;
@@ -28,7 +33,7 @@ body {
 }
 
 .statusBtn {
-  background-color: var(--header-bg);
+  background-color: var(--status-color);
   font-family: 'Courier New', Courier, monospace;
   border-radius: 5px;
 }
@@ -40,7 +45,11 @@ body {
 
 .form {
   margin: 20px auto;
-  border: 1px solid var(--bg);
+  border: 1px solid var(--border-color);
+}
+
+.radio-field {
+  border: 1px solid #cccccc;
 }
 
 legend {
@@ -86,26 +95,26 @@ form>div {
 h1 {
   width: 300px;
   padding: 5px;
-  border: 1px solid var(--bg);
+  border: 1px solid var(--border-color);
   box-shadow: 8px 8px var(--shadow);
 }
 
 #content {
-  background-color: var(--header-bg);
+  background-color: var(--bg);
   width: 100%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 200px));
   justify-content: center;
   gap: 10px;
+  padding-bottom: 20px;
 }
 
 #content>div {
-  background-color: var(--books);
-  color: black;
+  background-color: var(--books-bg);
   border-top: none;
   border-radius: none;
-  border: 1px solid var(--bg);
+  border: 1px solid var(--border-color);
   box-shadow: 8px 8px var(--shadow);
   padding: 10px;
   display: grid;
