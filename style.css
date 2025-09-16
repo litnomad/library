@@ -1,3 +1,10 @@
+html {
+  --bg: pink;
+  --header-bg: white;
+  --books: white;
+  --button-color: pink;
+}
+
 body {
   text-align: center;
   margin: 0px;
@@ -7,46 +14,67 @@ body {
 }
 
 .btn {
-  background-color: pink;
+  background-color: var(--button-color);
   font-family: 'Courier New', Courier, monospace;
   font-size: 23px;
 }
 
-#add {
+.submitBtn {
+  width: 80px;
+  background-color: var(--button-color);
+  font-family: 'Courier New', Courier, monospace;
+  align-self: center;
+  padding: 10px;
+}
+
+.statusBtn {
+  background-color: var(--header-bg);
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 5px;
+}
+
+.deleteBtn {
+  background-color: var(--button-color);
   font-family: 'Courier New', Courier, monospace;
 }
 
 .form {
-    margin: 20px auto;
+  margin: 20px auto;
+  border: 2px solid var(--bg);
+}
+
+legend {
+  font-weight: bold;
+}
+
+.form-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .form-wrap {
   display: flex;
-  justify-content: center;
-  column-gap: 10px;
-}
-
-.form-left-col{
-  display: flex;
   flex-direction: column;
-  row-gap: 10px;
 }
 
-.form-right-col {
+label[for='title'],
+label[for='author'],
+label[for='pages'] {
+  font-weight: bold;
+}
+
+input[id='title'],
+input[id='author'] {
   width: 300px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
 }
 
-.radio {
-  border: none;
-  display: flex;
-  justify-content: center;
+input[id='pages'] {
+  width: 100px;
 }
 
-form > div {
-    margin: 5px;
+form>div {
+  margin: 5px;
 }
 
 .header {
@@ -54,23 +82,20 @@ form > div {
 }
 
 #content {
-  background-color: pink;
+  background-color: var(--header-bg);
   width: 100%;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 180px);
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 200px));
   justify-content: center;
+  gap: 2px;
 }
 
-#content > div {
-  background-color: white;
+#content>div {
+  background-color: var(--books);
   color: black;
-  border: 2px solid pink;
+  border-top: 5px solid var(--bg);
   border-radius: 5px;
   padding: 10px;
-  margin: 5px;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
 }
-
