@@ -48,16 +48,18 @@ function addToLibrary() {
         myLibrary.push(newBook);
         console.log(myLibrary);
 
-        /* title.value = ''
+        /* 
+        title.value = ''
         author.value = ''
-        pages.value = '' */
+        pages.value = '' 
+        */
 
         displayLibrary();
     };
 }
 
+// Loops through the array and displays each book on the page
 function displayLibrary() {
-    // Loops through the array and displays each book on the page
     const div = document.createElement('div');
     const bookTitle = document.createElement('h3');
     const bookAuthor = document.createElement('p');
